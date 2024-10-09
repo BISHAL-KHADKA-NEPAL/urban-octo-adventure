@@ -3,6 +3,8 @@ import "./globals.css";
 import Script from "next/script";
 import { Metadata } from "next";
 import localFont from "next/font/local";
+import Header from "./hdfot/Header"; // Corrected import for Header
+import Footer from "./hdfot/Footer"; // Corrected import for Footer
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://clerk-next-app.vercel.app/"),
@@ -47,10 +49,13 @@ export default function RootLayout({
         }}
       >
         <body className={`min-h-screen flex flex-col antialiased`}>
-          {children}
+          <Header /> {/* Inserted Header component */}
+          <main className="flex-grow">{children}</main> {/* Main content */}
+          <Footer /> {/* Inserted Footer component */}
         </body>
       </ClerkProvider>
 
+      {/* Scripts for PrismJS */}
       <Script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js" />
       <Script src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js" />
     </html>
